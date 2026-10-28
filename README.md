@@ -41,7 +41,7 @@ Bookmarks and estimate lines are local to the browser. Project name and allowanc
 4. Deploy the main branch. Verify `/` and each `/api/prices?source=...` response on the production deployment.
 5. Verify search, comparisons, supplier links and CSV export against the production site. Supplier access from Vercel is not proven by a local collection.
 
-Source repository: https://github.com/ajmalharees2424/materialiq-dubai. Vercel builds the linked main branch. Verify live supplier access after each deployment.
+Source repository: https://github.com/ajmalharees2424/materialiq-dubai. Vercel project: materialiq-dubai (prj_ZTwXFyCCugST0y0kR4NMS8kRl9Sf). Source was deployed directly because Vercel's GitHub integration could not access this private repository. Enable repository access and connect it under Vercel Settings → Git for automatic deployments. Production retains Vercel Authentication until public access is approved. Verify live supplier access after each deployment.
 
 ## Validation
 
