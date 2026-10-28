@@ -1,0 +1,6 @@
+[
+{"id":"a1","name":"A1 Build","url":"https://a1build.ae","scope":"Selected tile adhesives and catalog variants","location":"UAE delivery","method":"Public product feed","parser":"shopify","pages":["/collections/tiles-adhesives/products.json?limit=100","/products.json?limit=100"]},
+{"id":"ed","name":"e-Delivery","url":"https://www.e-delivery.ae","scope":"Boards, adhesives, plywood and paints — first category pages","location":"Ras Al Khor, Dubai","method":"Public listing extraction","parser":"odoo","pages":["/shop/category/gypsum-and-cement-boards-702","/shop/category/tile-adhesive-753","/shop/category/building-materials-plywood-821","/shop/category/paint-coatings-paints-and-enamels-691"]},
+{"id":"nq","name":"NQ Cart","url":"https://nqcart.ae","scope":"Popular building and hardware products","location":"UAE delivery · confirm Dubai charges","method":"Public product feed","parser":"shopify","pages":["/collections/popular-products/products.json?limit=100"]},
+{"id":"canvas","name":"Canvas General Trading","url":"https://canvasgt.ae","scope":"Building materials, boards, adhesives and paints — first category pages","location":"Al Quoz, Dubai","method":"Public listing extraction","parser":"prestashop","pages":["/117-building-materials","/118-sheets-boards","/123-tapes-adhesives","/137-jotun-paints"]}
+]

@@ -1,0 +1,28 @@
+{
+  "attemptedAt": "2026-10-28T15:34:52.786Z",
+  "sources": [
+    {
+      "name": "A1 Build",
+      "count": 32,
+      "warnings": []
+    },
+    {
+      "name": "e-Delivery",
+      "count": 78,
+      "warnings": [
+        "No priced products on /shop/category/building-materials-plywood-821",
+        "No priced products on /shop/category/paint-coatings-paints-and-enamels-691"
+      ]
+    },
+    {
+      "name": "NQ Cart",
+      "count": 15,
+      "warnings": []
+    },
+    {
+      "name": "Canvas General Trading",
+      "count": 45,
+      "warnings": []
+    }
+  ]
+}

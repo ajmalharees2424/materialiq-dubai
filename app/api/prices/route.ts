@@ -1,0 +1,9 @@
+import {unstable_cache} from 'next/cache';
+import seed from '../../../lib/seed.json';
+import {sources} from '../../../lib/catalog';
+import {collectSource} from '../../../lib/scrapers.mjs';
+export const runtime='nodejs';
+export const maxDuration=120;
+export const dynamic='force-dynamic';
+async function fetchText(url:string){const r=await fetch(url,{redirect:'manual',signal:AbortSignal.timeout(18000),headers:{'User-Agent':'MaterialIQPriceIndex/1.0'},cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);if(Number(r.headers.get('content-length'))>5000000)throw Error('Response exceeds size limit');const reader=r.body?.getReader();if(!reader)throw Error('Empty response');let size=0;const parts:Uint8Array[]=[];try{while(true){const {done,value}=await reader.read();if(done)break;size+=value.length;if(size>5000000)throw Error('Response exceeds size limit');parts.push(value);}}finally{await reader.cancel();}return Buffer.concat(parts).toString('utf8');}
+export async function GET(request:Request){const id=new URL(request.url).searchParams.get('source');const source=sources.find(s=>s.id===id);if(!source)return Response.json({error:'Choose a configured supplier',sources:sources.map(s=>s.id)},{status:400});try{const result=await unstable_cache(async()=>{const r=await collectSource(source,fetchText);if(!r.products.length)throw Error('Supplier unavailable');return {...r,checkedAt:new Date().toISOString()};},['materialiq-v2',source.id],{revalidate:3600})();const health=result.warnings.length?'Partial coverage':'Connected';return Response.json({products:result.products,health:{[source.name]:health},checkedAt:result.checkedAt,cacheSeconds:3600});}catch(error){console.error('supplier_refresh_failed',{source:source.id,message:error instanceof Error?error.message:'Unknown'});return Response.json({products:seed.filter(p=>p.supplier===source.name).map(p=>({...p,status:'snapshot'})),health:{[source.name]:'Unavailable · dated snapshot'},cacheSeconds:0});}}
